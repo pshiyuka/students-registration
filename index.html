@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+    <div class="form-section">
+  <h2>Registration Form!</h2>
+  <form id="reg">
+    <fieldset>
+      <legend>Register</legend>
+
+      <label for="firstname">First name: *</label>
+      <input type="text" id="firstname" name="firstname">
+
+      <label for="lastname">Last name: *</label>
+      <input type="text" id="lastname" name="lastname">
+
+      <label for="email">Email: *</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="programme">Programme *:</label>
+      <input type="text" id="programme" placeholder="e.g. Computer Science">
+
+      <label>Year of Study *</label>
+      <div class="radio-group">
+        <label><input type="radio" name="year" value="1" required/> 1</label>
+        <label><input type="radio" name="year" value="2"/> 2</label>
+        <label><input type="radio" name="year" value="3"/> 3</label>
+      </div>
+
+      <label for="interests">Interests *</label>
+      <input type="text" id="interests" name="interests">
+
+      <label for="photo-url">Photo URL *</label>
+      <input type="url" id="photoUrl" name="URL">
+
+      <button type="submit">Add Student</button>
+    </fieldset>
+  </form>
+</div>
+
+     
+    <div class="output-section">
+
+    <!-- Profile Cards -->
+    <h2>Students Profile Cards</h2>
+    <div class="cards-container" id="cards">
+      <div class="emptyMessage" id="cards-empty-msg">
+        No student cards yet. Register a student to see their profile card here.
+      </div>
+    </div>
+
+    <!-- Summary Table -->
+    <h2>Students Summary Table</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Email</th>
+          <th>Programme</th>
+          <th>Year of Study</th>
+          <th>Interests</th>
+          <th>Photo URL</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+        <tr>
+          <td colspan="7" class="emptyMessage">No students registered yet.</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("reg");
+    const cards = document.getElementById("cards");
+    const tableBody = document.getElementById("tableBody");
+    const cardsMsg = document.getElementById("cards-empty-msg");
+
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let firstname = document.getElementById("firstname").value;
+        let lastname = document.getElementById("lastname").value;
+        let email = document.getElementById("email").value;
+        let programme = document.getElementById("programme").value;
+        let year = document.querySelector('input[name="year"]:checked');
+        let interests = document.getElementById("interests").value;
+        let photo = document.getElementById("photoUrl").value;
+        
+
+
+        // simple validation
+        if (firstname == "" || lastname == "" || email == "" || programme == "" || !year) {
+            alert("Please fill in all required fields");
+            return;
+        }
+
+        if (!email.includes("@") || !email.includes(".")) {
+            alert("Enter a valid email");
+            return;
+        }
+
+        let studentId = "student-" + Date.now();
+
+        // hide empty message
+        cardsMsg.style.display = "none";
+        if (tableBody.querySelector(".emptyMessage")) {
+            tableBody.innerHTML = "";
+        }
+
+        // make card
+        let card = document.createElement("div");
+        card.className = "card";
+        card.setAttribute("data-id", studentId);
+
+        card.innerHTML = `
+        <div class="card-header">
+            <div class="card-body">
+         <img src="${photo}" class="card-avatar">
+            <h3>${firstname} ${lastname}</h3>
+            <p><b>Email:</b> ${email}</p>
+            <p><b>Programme:</b> ${programme}</p>
+            <p><b>Year:</b> ${year.value}</p>
+            <p><b>Interests:</b> ${interests}</p>
+            </div>
+            </div>
+            <div class="card-actions">
+            <button onclick="removeStudent('${studentId}')">Remove</button>
+            </div>
+            
+        `;
+        cards.appendChild(card);
+
+        // make table row
+        let row = document.createElement("tr");
+        row.setAttribute("data-id", studentId);
+        row.innerHTML = `
+            <td>${firstname}</td>
+            <td>${lastname}</td>
+            <td>${email}</td>
+            <td>${programme}</td>
+            <td>Year ${year.value}</td>
+            <td>${interests}</td>
+            <td>${photoUrl}</td>
+        `;
+        tableBody.appendChild(row);
+
+        form.reset();
+    });
+
+    window.removeStudent = function(id) {
+        let card = document.querySelector(`.card[data-id="${id}"]`);
+        if (card) card.remove();
+
+        let row = document.querySelector(`tr[data-id="${id}"]`);
+        if (row) row.remove();
+
+        if (cards.querySelectorAll(".card").length == 0) {
+            cardsMsg.style.display = "block";
+        }
+
+        if (tableBody.querySelectorAll("tr").length == 0) {
+            tableBody.innerHTML = '<tr><td colspan="5" class="emptyMessage">No students registered yet.</td></tr>';
+        }
+    };
+});
+</script>
+
+    
+</body>
+</html>
