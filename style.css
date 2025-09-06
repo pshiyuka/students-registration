@@ -1,10 +1,12 @@
-* {
+    /* Reset styles */
+    * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
+        /* Body styling */
         body {
             background-color: #3ab5c6;
             color: #333;
@@ -14,19 +16,21 @@
             margin: 0 auto;
         }
         
-        
+        /* styling the headings */
         h1, h2, h3 {
             margin-bottom: 15px;
             color: #24496f;
         }
-        
+
+        /* Main layout container styling */
         .container {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             margin-bottom: 30px;
         }
-        
+
+        /* Registration form section */
         .form-section {
             flex: 1;
             min-width: 300px;
@@ -34,40 +38,45 @@
             padding: 25px;
             border-radius: 10px;
         }
-        
+
+        /* Output which is the profile cards and the table */
         .output-section {
             flex: 2;
             min-width: 300px;
         }
-        
+
+        /* inputs*/
         fieldset {
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
         }
-        
+
+        /* Title of each fieldset */
         legend {
             font-weight: bold;
             padding: 0 10px;
             color: #2c3e50;
         }
-        
+
+        /* Space between input groups */
         .form-group {
             margin-bottom: 15px;
         }
-        
+
+        /* Label styling */
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: 600;
             color: #2c3e50;
         }
-        
+
+        /* Input fields*/
         input[type="text"],
         input[type="email"],
-        input[type="url"],
-        select {
+        input[type="url"] {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -75,6 +84,7 @@
             font-size: 16px;
         }
         
+        /* Radio button styling */
         .radio-group {
             display: flex;
             gap: 15px;
@@ -82,6 +92,7 @@
             margin-top: 5px;
         }
         
+        /*Radio option labels*/
         .radio-group label {
             display: flex;
             align-items: center;
@@ -89,10 +100,12 @@
             cursor: pointer;
         }
         
+        /* Space between radio button and text */
         .radio-group input {
             margin-right: 5px;
         }
         
+        /* Submit button styling */
         button {
             background: #3498db;
             color: white;
@@ -106,7 +119,7 @@
             width: 100%;
         }
         
-        
+        /* Student profile cards */
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -114,6 +127,7 @@
             margin-bottom: 30px;
         }
         
+        /* Each card */
         .card {
             background: rgb(142, 136, 136);
             border-radius: 10px;
@@ -121,10 +135,12 @@
         
         }
         
+        /* Card body content */
         .card-body {
             padding: 20px;
         }
         
+        /* Profile image inside card */
         .card-avatar {
             width: 100px;
             height: 100px;
@@ -135,7 +151,7 @@
             border: 3px solid #f5f7fa;
         }
         
-        
+        /* Table layout */
         table {
             width: 700px;
             border-collapse: collapse;
@@ -143,12 +159,14 @@
     
         }
 
+        /* Table borders */
         table, th, td{
             border: 1px solid black;
             text-align: left;
 
         }
         
+        /* Table cells */
         th, td {
             padding: 10px;
         
