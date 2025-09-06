@@ -11,6 +11,7 @@
     <div class="container">
     <div class="form-section">
   <h2>Registration Form!</h2>
+  <!--Use form to create a registration form-->
   <form id="reg">
     <fieldset>
       <legend>Register</legend>
@@ -78,7 +79,7 @@
     </table>
 
   </div>
-
+<!--Javascript code-->
 <script>
 document.addEventListener("DOMContentLoaded", function() {
     const form = document.getElementById("reg");
@@ -157,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         form.reset();
     });
-
+    // Function to remove a student by ID.
     window.removeStudent = function(id) {
         let card = document.querySelector(`.card[data-id="${id}"]`);
         if (card) card.remove();
