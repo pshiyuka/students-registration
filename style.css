@@ -8,7 +8,8 @@
 
         /* Body styling */
         body {
-            background-color: #3ab5c6;
+            background: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKKZfR0tuYi0V029RVuBy3ZYE-Y_Iq-JD2_w&s) no-repeat ;
+            background-size: cover;
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -20,6 +21,24 @@
         h1, h2, h3 {
             margin-bottom: 15px;
             color: #24496f;
+            padding-left: 30px;
+        }
+
+        h1, h2{
+            text-align: center;
+            text-decoration: solid underline;
+        }
+
+        /* Styling for empty messages */
+        #cards-empty-msg, .emptyMessage, #tableBody .emptyMessage {
+            text-align: center;
+            color: #011316;
+            font-style: italic;
+           
+        }
+        /* Center the cards empty message */
+        #cards-empty-msg{
+            padding-left: 150px;  
         }
 
         /* Main layout container styling */
@@ -28,21 +47,29 @@
             flex-wrap: wrap;
             gap: 30px;
             margin-bottom: 30px;
+            justify-content: space-between;
         }
 
         /* Registration form section */
         .form-section {
             flex: 1;
             min-width: 300px;
-            background: rgb(142, 136, 136);
+            background: rgb(142, 241, 230);
             padding: 25px;
             border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            height: fit-content;
         }
 
         /* Output which is the profile cards and the table */
         .output-section {
             flex: 2;
             min-width: 300px;
+            background: rgb(142, 241, 230);
+            padding: 25px;
+            border-radius: 10px;
+            height: fit-content;
+
         }
 
         /* inputs*/
@@ -51,6 +78,7 @@
             border-radius: 8px;
             padding: 20px;
             margin-bottom: 20px;
+            
         }
 
         /* Title of each fieldset */
@@ -118,6 +146,11 @@
             font-weight: 600;
             width: 100%;
         }
+
+        /* Button hover effect */
+        button:hover {
+            background: #03253c;
+        }
         
         /* Student profile cards */
         .cards-container {
@@ -129,10 +162,17 @@
         
         /* Each card */
         .card {
-            background: rgb(142, 136, 136);
+            background: rgb(81, 209, 237);
             border-radius: 10px;
             overflow: hidden;
         
+        }
+
+        /* Card hover effect */
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
         }
         
         /* Card body content */
@@ -172,20 +212,31 @@
         
         }
 
-        /* Responsive layout for screens smaller than 768px */
-@media (max-width: 768px) {
+        /* Responsive layout for smaller screens*/
+@media (max-width: 992px) {
     .container {
-        flex-direction: column;  
+        flex-direction: column; 
+        gap: 20px; 
     }
 
     .form-section,
     .output-section {
         min-width: 100%;   
         padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     table {
-        width: 100%;   
+        width: 100%;
+        font-size: 14px;  
+        overflow-x: auto;
+        display: block;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr; 
+        gap: 15px;
     }
 
     .card-avatar {
@@ -202,4 +253,47 @@
         font-size: 14px;
         padding: 8px;
     }
+}
+
+@media (max-width: 576px) {
+    body{
+        padding: 10px;
+        margin: 0;
+    }
+
+    .form-section,
+    .output-section {  
+        padding: 15px 10px;
+        margin: 0;
+
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="password"],
+    select,
+    textarea {
+        font-size: 14px;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .radio-group {
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    h2{
+        font-size: 1.3rem;
+        margin: 10px 0;
+    }
+
+    button{
+        width: 100%;
+        margin: 10px 0;
+    }
+    
 }
